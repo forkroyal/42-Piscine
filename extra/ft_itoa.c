@@ -6,7 +6,7 @@
 /*   By: fsitter <fsitter@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:48:09 by fsitter           #+#    #+#             */
-/*   Updated: 2025/09/11 18:22:33 by fsitter          ###   ########.fr       */
+/*   Updated: 2025/09/11 18:28:06 by fsitter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ char	*ft_itoa(int number)
 	itoa[stellen--] = '\0';
 	if (number == 0)
 	{
-		itoa[0] = '0';
+		itoa[0] = 48;
 		return (itoa);
 	}
 	if (number < 0)
@@ -54,7 +54,7 @@ char	*ft_itoa(int number)
 	}
 	while (number > 0)
 	{
-		itoa[stellen] = number % 10 + '0';
+		itoa[stellen] = number % 10 + 48;
 		number = number / 10;
 		stellen--;
 	}
@@ -63,5 +63,6 @@ char	*ft_itoa(int number)
 
 int	main(void)
 {
-	printf("%s", ft_itoa(221));
+    printf("%i\n", wie_viele_stellen_hat_meine_zahl(5));
+	printf("%s", ft_itoa(5));
 }

@@ -6,7 +6,7 @@
 /*   By: fsitter <fsitter@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/11 14:52:57 by fsitter           #+#    #+#             */
-/*   Updated: 2025/09/11 17:33:07 by fsitter          ###   ########.fr       */
+/*   Updated: 2025/09/11 19:13:07 by fsitter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,81 +68,81 @@ void	ft_show_tab(struct s_stock_str *par)
 	}
 }
 
-// testing
+//testing
 
-// char	*ft_strcpy(char *dest, char *src)
-// {
-// 	int	i;
+char	*ft_strcpy(char *dest, char *src)
+{
+	int	i;
 
-// 	i = 0;
-// 	while (src[i] != '\0')
-// 	{
-// 		dest[i] = src[i];
-// 		i++;
-// 	}
-// 	dest[i] = '\0';
-// 	return (dest);
-// }
+	i = 0;
+	while (src[i] != '\0')
+	{
+		dest[i] = src[i];
+		i++;
+	}
+	dest[i] = '\0';
+	return (dest);
+}
 
-// int	ft_strlen(char *str)
-// {
-// 	int	counter;
+int	ft_strlen(char *str)
+{
+	int	counter;
 
-// 	counter = 0;
-// 	while (*str != '\0')
-// 	{
-// 		counter += 1;
-// 		str += 1;
-// 	}
-// 	return (counter);
-// }
+	counter = 0;
+	while (*str != '\0')
+	{
+		counter += 1;
+		str += 1;
+	}
+	return (counter);
+}
 
-// char	*ft_strdup(char *src)
-// {
-// 	int		i;
-// 	char	*new;
+char	*ft_strdup(char *src)
+{
+	int		i;
+	char	*new;
 
-// 	i = ft_strlen(src);
-// 	new = malloc(sizeof(char) * i + 1);
-// 	ft_strcpy(new, src);
-// 	return (new);
-// }
+	i = ft_strlen(src);
+	new = malloc(sizeof(char) * i + 1);
+	ft_strcpy(new, src);
+	return (new);
+}
 
-// struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
-// {
-// 	struct s_stock_str	*array;
-// 	int					i;
+struct s_stock_str	*ft_strs_to_tab(int ac, char **av)
+{
+	struct s_stock_str	*array;
+	int					i;
 
-// 	array = malloc(sizeof(t_stock_str) * (ac + 1));
-// 	if (array == NULL)
-// 		return (NULL);
-// 	i = 0;
-// 	while (i < ac)
-// 	{
-// 		if (av[i] == NULL)
-// 			return (NULL);
-// 		array[i].size = ft_strlen(av[i]);
-// 		array[i].str = av[i];
-// 		array[i].copy = ft_strdup(av[i]);
-// 		if (array[i].copy == NULL)
-// 		{
-// 			while (array[i].copy)
-// 				free(array[i--].copy);
-// 			free(array);
-// 			return (NULL);
-// 		}
-// 		i++;
-// 	}
-// 	array[i] = (t_stock_str){0, NULL, NULL};
-// 	return (array);
-// }
+	array = malloc(sizeof(t_stock_str) * (ac + 1));
+	if (array == NULL)
+		return (NULL);
+	i = 0;
+	while (i < ac)
+	{
+		if (av[i] == NULL)
+			return (NULL);
+		array[i].size = ft_strlen(av[i]);
+		array[i].str = av[i];
+		array[i].copy = ft_strdup(av[i]);
+		if (array[i].copy == NULL)
+		{
+			while (array[i].copy)
+				free(array[i--].copy);
+			free(array);
+			return (NULL);
+		}
+		i++;
+	}
+	array[i] = (t_stock_str){0, NULL, NULL};
+	return (array);
+}
 
-// // int main(int argc, char **argv)
-// int	main(void)
-// {
-// 	int argc = 2;
-// 	char *argv[] = {"hello", "oioi"};
-// 	struct s_stock_str *array = ft_strs_to_tab(argc, argv);
+// int main(int argc, char **argv)
+int	main(void)
+{
+	int argc = 2;
+	char *argv[] = {"hello", ""};
+	struct s_stock_str *array = ft_strs_to_tab(argc, argv);
 
-// 	ft_show_tab(array);
-// }
+	ft_show_tab(array);
+}
