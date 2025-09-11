@@ -6,25 +6,62 @@
 /*   By: fsitter <fsitter@student.42vienna.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/09/10 15:48:09 by fsitter           #+#    #+#             */
-/*   Updated: 2025/09/10 18:37:44 by fsitter          ###   ########.fr       */
+/*   Updated: 2025/09/11 18:22:33 by fsitter          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
-#include <unistd.h>
 #include <stdio.h>
+#include <stdlib.h>
+#include <unistd.h>
 
-//erstelle eine funktion die die dezimalstellen zählt, dividiere die zahl so lange durch 10 bis sie 0 ergibt
-// ist die zahl negativ *-1 und i++
+int	wie_viele_stellen_hat_meine_zahl(int number)
+{
+	int	i;
 
-int wie_viele_stellen_hat_meine_zahl(int number);
+	i = 0;
+	if (number < 0)
+	{
+		number = number * -1;
+		i++;
+	}
+	while (number > 0)
+	{
+		number = number / 10;
+		i++;
+	}
+	return (i);
+}
 
+char	*ft_itoa(int number)
+{
+	int		stellen;
+	char	*itoa;
 
+	stellen = wie_viele_stellen_hat_meine_zahl(number);
+	itoa = malloc(sizeof(char) * (stellen + 1));
+	if (itoa == NULL)
+		return (NULL);
+	itoa[stellen--] = '\0';
+	if (number == 0)
+	{
+		itoa[0] = '0';
+		return (itoa);
+	}
+	if (number < 0)
+	{
+		itoa[0] = '-';
+		number = number * -1;
+	}
+	while (number > 0)
+	{
+		itoa[stellen] = number % 10 + '0';
+		number = number / 10;
+		stellen--;
+	}
+	return (itoa);
+}
 
-
-//itoa -- use the upper to malloc a str and find i
-//set str[i--] or str[i+1] to \0
-//while nbr > 9 set nr % 10 + '0' to str[i]
-//i++;
-//nbr / 10
-//return str
+int	main(void)
+{
+	printf("%s", ft_itoa(221));
+}
